@@ -1,0 +1,39 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 126px;
+}
+
+.wrapper {
+  //   padding: 0 auto;
+}
+.titleContent {
+  position: relative;
+  //   width: 300px;
+
+  .title {
+    text-align: center;
+    letter-spacing: 4.32px;
+  }
+  .icon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    right: 30px;
+    bottom: -10px;
+  }
+}
+
+.subTitle {
+  text-align: center;
+  letter-spacing: 2.52px;
+  line-height: normal;
+  margin-top: 52px;
+}
+
+.buttonContent {
+  display: flex;
+  gap: 41px;
+  margin-top: 87px;
+}
