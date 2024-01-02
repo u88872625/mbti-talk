@@ -1,0 +1,30 @@
+.EISelect {
+  display: flex;
+  justify-content: center;
+  padding-top: 126px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    letter-spacing: 4.32px;
+  }
+
+  h2 {
+    letter-spacing: 2.52px;
+    margin-top: 58px;
+  }
+
+  .optionWrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 72px;
+  }
+
+  .buttonWrapper {
+    margin-top: 58px;
+  }
+}
