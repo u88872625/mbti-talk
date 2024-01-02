@@ -1,0 +1,15 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+.selected {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.notSelected {
+  opacity: 0.5;
+  cursor: pointer;
+}

@@ -6,4 +6,9 @@
   font-size: 24px;
   font-weight: 900;
   letter-spacing: 1.92px;
+
+  &:hover,
+  &:active {
+    background-color: #ff8800;
+  }
 }

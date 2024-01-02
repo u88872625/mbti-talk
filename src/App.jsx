@@ -1,12 +1,12 @@
 import "../src/styles/App.module.scss";
-import MainButton from "./components/Buttons/MainButton";
-import MatchButton from "./components/Buttons/MatchButton";
-import SystemBox from "./components/Chat/SystemBox";
+import Home from "./pages/Home/Home";
+import SelfSelect from "./pages/SelfSelect/SelfSelect";
+import MatchSelect from "./pages/MatchSelect/MatchSelect";
 
 function App() {
   return (
     <div className="App">
-      <SystemBox />
+      <SelfSelect />
     </div>
   );
 }
