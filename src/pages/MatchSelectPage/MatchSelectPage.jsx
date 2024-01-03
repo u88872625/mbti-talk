@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./MatchSelect.module.scss";
+import styles from "./MatchSelectPage.module.scss";
 import MBTIselect from "../../components/MBTIselect/MBTIselect";
 import MatchButton from "../../components/Buttons/MatchButton";
 const MatchSelect = () => {

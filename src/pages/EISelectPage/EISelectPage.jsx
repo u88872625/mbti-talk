@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./EISelect.module.scss";
+import styles from "./EISelectPage.module.scss";
 import EIButton from "../../components/Buttons/EIButton";
 import MatchButton from "../../components/Buttons/MatchButton";
 
-const EISelect = () => {
+const EISelectPage = () => {
   return (
     <div className={styles.EISelect}>
       <div className={styles.wrapper}>
@@ -21,4 +21,4 @@ const EISelect = () => {
   );
 };
 
-export default EISelect;
+export default EISelectPage;

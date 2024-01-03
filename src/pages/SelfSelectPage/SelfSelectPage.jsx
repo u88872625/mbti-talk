@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styles from "./SelfSelect.module.scss";
+import styles from "./SelfSelectPage.module.scss";
 import MBTIselect from "../../components/MBTIselect/MBTIselect";
 import MatchButton from "../../components/Buttons/MatchButton";
+import { Link } from "react-router-dom";
 
 const SelfSelect = () => {
   const [selectMBTI, setSelectMBTI] = useState(null);
@@ -25,7 +26,9 @@ const SelfSelect = () => {
           <MBTIselect onMBTISelect={handleMBTISelect} />
         </div>
         <div className={styles.buttonWrapper}>
-          <MatchButton text={"進入大廳"} onClick={handleMatchButtonClick} />
+          <Link to={"/mode"}>
+            <MatchButton text={"進入大廳"} onClick={handleMatchButtonClick} />
+          </Link>
         </div>
       </div>
     </div>

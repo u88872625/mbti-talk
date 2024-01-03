@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "./Home.module.scss";
+import styles from "./HomePage.module.scss";
 import pawIcon from "../../assets/icon/paw-yellow.svg";
 import MainButton from "../../components/Buttons/MainButton";
+import { Link } from "react-router-dom";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className={styles.home}>
       <div className={styles.wrapper}>
@@ -17,7 +18,9 @@ const Home = () => {
           MBTI嗎？
         </h2>
         <div className={styles.buttonContent}>
-          <MainButton mainText={"Yes"} subText={"(選擇身份)"} />
+          <Link to={"/select"}>
+            <MainButton mainText={"Yes"} subText={"(選擇身份)"} />
+          </Link>
           <MainButton mainText={"No"} subText={"(開始測驗)"} />
         </div>
       </div>
@@ -25,4 +28,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
