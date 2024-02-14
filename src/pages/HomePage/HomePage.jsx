@@ -21,7 +21,9 @@ const HomePage = () => {
           <Link to={"/select"}>
             <MainButton mainText={"Yes"} subText={"(選擇身份)"} />
           </Link>
-          <MainButton mainText={"No"} subText={"(開始測驗)"} />
+          <Link to={"/quiz-start"}>
+            <MainButton mainText={"No"} subText={"(開始測驗)"} />
+          </Link>
         </div>
       </div>
     </div>

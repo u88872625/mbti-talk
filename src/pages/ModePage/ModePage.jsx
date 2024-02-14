@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./ModePage.module.scss";
-import PinkPaw from "../../assets/image/paw-pink.svg";
-import YellowPaw from "../../assets/image/paw-yellow.svg";
-import BluePaw from "../../assets/image/paw-blue.svg";
+import PinkPaw from "../../assets/image/talk/paw-pink.svg";
+import YellowPaw from "../../assets/image/talk/paw-yellow.svg";
+import BluePaw from "../../assets/image/talk/paw-blue.svg";
 import { useNavigate } from "react-router-dom";
 import {
   SocketContext,
