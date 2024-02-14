@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./SelfSelectPage.module.scss";
 import MBTIselect from "../../components/MBTIselect/MBTIselect";
 import MatchButton from "../../components/Buttons/MatchButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { SocketContext, UserInfoContext } from "../../utils/context";
 
 const SelfSelect = () => {
   const [selectMBTI, setSelectMBTI] = useState(null);
+  const { userInfo, setUserInfo } = useContext(UserInfoContext);
+
+  const socket = useContext(SocketContext);
+  const navigate = useNavigate();
+
+  console.log("Initial user info:", userInfo);
 
   const handleMBTISelect = (MBTI) => {
     setSelectMBTI(MBTI);
@@ -13,10 +20,28 @@ const SelfSelect = () => {
 
   const handleMatchButtonClick = () => {
     if (selectMBTI) {
-      localStorage.setItem("MBTIType", selectMBTI.type);
-      localStorage.setItem("MBTIImage", selectMBTI.image);
+      socket.emit("selectMBTI", {
+        id: userInfo.id,
+        mbtiType: selectMBTI.type,
+        mbtiImage: selectMBTI.image,
+      });
     }
   };
+
+  useEffect(() => {
+    localStorage.removeItem("userInfo");
+
+    socket.on("userInfo", (user) => {
+      console.log("Received user info:", user);
+      setUserInfo(user);
+      localStorage.setItem("userInfo", JSON.stringify(user));
+
+      navigate("/mode");
+    });
+    return () => {
+      socket.off("userInfo");
+    };
+  }, [socket, setUserInfo, navigate]);
 
   return (
     <div className={styles.selfSelect}>
@@ -26,9 +51,7 @@ const SelfSelect = () => {
           <MBTIselect onMBTISelect={handleMBTISelect} />
         </div>
         <div className={styles.buttonWrapper}>
-          <Link to={"/mode"}>
-            <MatchButton text={"進入大廳"} onClick={handleMatchButtonClick} />
-          </Link>
+          <MatchButton text={"進入大廳"} onClick={handleMatchButtonClick} />
         </div>
       </div>
     </div>

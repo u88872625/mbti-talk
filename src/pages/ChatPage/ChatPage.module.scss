@@ -12,6 +12,19 @@
   max-width: 1024px;
 }
 
+.messageWrapper {
+  max-height: 85vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #636363;
+    border-radius: 10px;
+  }
+}
+
 .inputWrapper {
   position: absolute;
   bottom: 0;

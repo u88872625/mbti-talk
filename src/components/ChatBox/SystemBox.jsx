@@ -4,7 +4,7 @@ import pawIcon from "../../assets/icon/paw-yellow.svg";
 
 const SystemBox = ({ message }) => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.systemBox}>
         <p className={styles.message}>{message}</p>
         <img className={styles.icon} src={pawIcon} />

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./EISelectPage.module.scss";
 import EIButton from "../../components/Buttons/EIButton";
 import MatchButton from "../../components/Buttons/MatchButton";
+import { useNavigate } from "react-router-dom";
 
 const EISelectPage = () => {
+  const [selectMBTI, setSelectMBTI] = useState(null);
+  const navigate = useNavigate();
+
   return (
     <div className={styles.EISelect}>
       <div className={styles.wrapper}>

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./MatchSelectPage.module.scss";
 import MBTIselect from "../../components/MBTIselect/MBTIselect";
 import MatchButton from "../../components/Buttons/MatchButton";
+
 const MatchSelect = () => {
   return (
     <div className={styles.matchSelect}>
