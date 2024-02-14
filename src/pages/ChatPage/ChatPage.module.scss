@@ -42,3 +42,18 @@
     border: 1px solid #005ebb;
   }
 }
+
+.textWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  .modalText {
+    color: #000000;
+    font-weight: 700;
+  }
+}
+
+.modalButton {
+  font-size: 13px;
+}

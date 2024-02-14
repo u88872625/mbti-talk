@@ -9,7 +9,8 @@ import {
   RoomContext,
   UserInfoContext,
 } from "../../utils/context";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 const ChatPage = () => {
   const [message, setMessage] = useState("");
@@ -19,6 +20,9 @@ const ChatPage = () => {
   const { userInfo, setUserInfo } = useContext(UserInfoContext);
   const messageWrapperRef = useRef(null);
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   console.log(userInfo);
   console.log(messages);
   console.log(roomInfo);
@@ -110,6 +114,7 @@ const ChatPage = () => {
       userInfo: userInfo,
       roomInfo: roomInfo,
     });
+    setShow(false);
     navigate("/mode");
   };
 
@@ -146,7 +151,9 @@ const ChatPage = () => {
             )}
         </div>
         <div className={styles.inputWrapper}>
-          <img src={leaveIcon} alt="離開" onClick={handleLeaveRoom} />
+          <button>
+            <img src={leaveIcon} alt="離開" onClick={handleShow} />
+          </button>
 
           <input
             type="text"
@@ -155,8 +162,39 @@ const ChatPage = () => {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
-          <img src={sendIcon} alt="傳送" onClick={handleSendMessage} />
+          <button>
+            <img src={sendIcon} alt="傳送" onClick={handleSendMessage} />
+          </button>
         </div>
+
+        <Modal
+          show={show}
+          onHide={handleClose}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Body>
+            <div className={styles.textWrapper}>
+              <p className={styles.modalText}>確定要離開嗎？</p>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={handleClose}
+              className={styles.modalButton}
+            >
+              取消
+            </Button>
+            <Button
+              variant="primary"
+              onClick={handleLeaveRoom}
+              className={styles.modalButton}
+            >
+              確定
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </div>
   );
