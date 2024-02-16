@@ -1,0 +1,29 @@
+.questionWrapper {
+  background-image: url("../../assets/image/quiz/背景圖片.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 68px;
+}
+.illustration {
+  margin-top: 45px;
+}
+
+.optionWrapper {
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    margin-top: 20px;
+  }
+}

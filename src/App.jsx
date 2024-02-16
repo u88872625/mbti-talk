@@ -7,6 +7,7 @@ import ModePage from "./pages/ModePage/ModePage";
 import EISelectPage from "./pages/EISelectPage/EISelectPage";
 import ChatPage from "./pages/ChatPage/ChatPage";
 import QuizStartPage from "./pages/QuizStartPage/QuizStartPage";
+import QuizPage from "./pages/QuizPage/QuizPage";
 import { SocketContext, RoomContext, UserInfoContext } from "./utils/context";
 import { io } from "socket.io-client";
 import { useState } from "react";
@@ -40,6 +41,7 @@ function App() {
                 <Route element={<EISelectPage />} path={"/E-I-select"}></Route>
                 <Route element={<ChatPage />} path={"/chat"}></Route>
                 <Route element={<QuizStartPage />} path={"/quiz-start"}></Route>
+                <Route element={<QuizPage />} path={"/quiz"}></Route>
               </Routes>
             </RoomContext.Provider>
           </UserInfoContext.Provider>
