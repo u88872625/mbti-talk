@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Results.module.scss";
 import MatchButton from "../Buttons/MatchButton";
 import ISTP from "../../assets/image/quiz/ISTP.png";
 import ISFP from "../../assets/image/quiz/ISFP.png";
@@ -19,7 +20,7 @@ import ENFJ from "../../assets/image/quiz/ENFJ.png";
 
 const Results = ({ mbtiType, onMatchButton }) => {
   const resultImageMap = {
-    INTP: { Imamge: INTP, avatar: INTP },
+    INTP: INTP,
     INTJ: INTJ,
     INFP: INFP,
     INFJ: INFJ,
@@ -38,9 +39,16 @@ const Results = ({ mbtiType, onMatchButton }) => {
   };
 
   return (
-    <div>
-      <img src={resultImageMap[mbtiType]} alt="{`Result for ${mbtiType}`}" />
-      <MatchButton text={"進入大廳"} onClick={onMatchButton} />
+    <div className={styles.results}>
+      <img
+        className={styles.image}
+        src={resultImageMap[mbtiType]}
+        alt="{`Result for ${mbtiType}`}"
+      />
+
+      <div className={styles.buttonWrapper}>
+        <MatchButton text={"進入大廳"} onClick={onMatchButton} />
+      </div>
     </div>
   );
 };

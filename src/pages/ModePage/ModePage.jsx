@@ -3,6 +3,8 @@ import styles from "./ModePage.module.scss";
 import PinkPaw from "../../assets/image/talk/paw-pink.svg";
 import YellowPaw from "../../assets/image/talk/paw-yellow.svg";
 import BluePaw from "../../assets/image/talk/paw-blue.svg";
+import Loading from "../../components/Loading/Loading";
+import MatchButton from "../../components/Buttons/MatchButton";
 import { useNavigate } from "react-router-dom";
 import {
   SocketContext,
@@ -18,11 +20,17 @@ const Mode = () => {
   const navigate = useNavigate();
   console.log(userInfo);
   console.log(roomInfo);
+
   const handleRandomChat = () => {
     setLoading(true);
     socket.emit("randomChat");
   };
 
+  const handleCancelRandomChat = () => {
+    socket.emit("cancelRandomChat");
+    setLoading(false);
+    navigate("/mode");
+  };
   useEffect(() => {
     socket.on("randomRoomNum", (randomRoomNum) => {
       setLoading(false);
@@ -44,7 +52,15 @@ const Mode = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <div className={styles.loadingWrapper}>
+          <Loading />
+          <p>等待配對中...</p>
+          <MatchButton text={"取消"} onClick={handleCancelRandomChat} />
+        </div>
+      </div>
+    );
   }
 
   return (
