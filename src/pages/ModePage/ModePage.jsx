@@ -31,19 +31,7 @@ const Mode = () => {
     setLoading(false);
     navigate("/mode");
   };
-  // useEffect(() => {
-  //   socket.on("randomRoomNum", (randomRoomNum) => {
-  //     setLoading(false);
-  //     const newRoomInfo = { mode: "random", room: randomRoomNum };
-  //     setRoomInfo(newRoomInfo);
-  //     localStorage.setItem("roomInfo", JSON.stringify(newRoomInfo));
-  //     localStorage.setItem("userInfo", JSON.stringify(userInfo));
-  //     navigate("/chat");
-  //   });
-  //   return () => {
-  //     socket.off("randomRoomNum");
-  //   };
-  // }, [socket, setRoomInfo, navigate, userInfo]);
+
   useEffect(() => {
     const handleRandomRoomNum = (randomRoomNum) => {
       setLoading(false);

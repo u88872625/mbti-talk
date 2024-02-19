@@ -34,7 +34,6 @@ const QuizPage = () => {
     localStorage.removeItem("userInfo");
 
     socket.on("userInfo", (user) => {
-      console.log("Received user info:", user);
       setUserInfo(user);
       localStorage.setItem("userInfo", JSON.stringify(user));
 
