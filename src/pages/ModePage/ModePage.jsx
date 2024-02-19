@@ -31,19 +31,35 @@ const Mode = () => {
     setLoading(false);
     navigate("/mode");
   };
+  // useEffect(() => {
+  //   socket.on("randomRoomNum", (randomRoomNum) => {
+  //     setLoading(false);
+  //     const newRoomInfo = { mode: "random", room: randomRoomNum };
+  //     setRoomInfo(newRoomInfo);
+  //     localStorage.setItem("roomInfo", JSON.stringify(newRoomInfo));
+  //     localStorage.setItem("userInfo", JSON.stringify(userInfo));
+  //     navigate("/chat");
+  //   });
+  //   return () => {
+  //     socket.off("randomRoomNum");
+  //   };
+  // }, [socket, setRoomInfo, navigate, userInfo]);
   useEffect(() => {
-    socket.on("randomRoomNum", (randomRoomNum) => {
+    const handleRandomRoomNum = (randomRoomNum) => {
       setLoading(false);
       const newRoomInfo = { mode: "random", room: randomRoomNum };
       setRoomInfo(newRoomInfo);
       localStorage.setItem("roomInfo", JSON.stringify(newRoomInfo));
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
       navigate("/chat");
-    });
-    return () => {
-      socket.off("randomRoomNum");
     };
-  }, [socket, setRoomInfo, navigate, userInfo]);
+
+    socket.on("randomRoomNum", handleRandomRoomNum);
+
+    return () => {
+      socket.off("randomRoomNum", handleRandomRoomNum);
+    };
+  }, [socket, navigate, userInfo, setRoomInfo]);
 
   useEffect(() => {
     if (!userInfo.mbtiType) {
@@ -74,18 +90,19 @@ const Mode = () => {
           </div>
 
           <div className={styles.option}>
-            <img src={YellowPaw} alt="指定配對聊天" />
-            <h3>
-              指定配對聊天
-              <br /> (Comming Soon...)
-            </h3>
+            <img
+              className={styles.unOpened}
+              src={YellowPaw}
+              alt="指定配對聊天"
+            />
+            <h3>指定配對聊天</h3>
+            <p>(敬請期待)</p>
           </div>
 
           <div className={styles.option}>
-            <img src={BluePaw} alt="E/I 二選一" />
-            <h3>
-              E/I 二選一 <br /> (Comming Soon...)
-            </h3>
+            <img className={styles.unOpened} src={BluePaw} alt="E/I 二選一" />
+            <h3>E/I 二選一</h3>
+            <p>(敬請期待)</p>
           </div>
         </div>
       </div>

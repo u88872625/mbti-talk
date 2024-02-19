@@ -15,6 +15,7 @@ import { Modal, Button } from "react-bootstrap";
 const ChatPage = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
   const socket = useContext(SocketContext);
   const { roomInfo, setRoomInfo } = useContext(RoomContext);
   const { userInfo, setUserInfo } = useContext(UserInfoContext);
@@ -29,14 +30,12 @@ const ChatPage = () => {
 
   useEffect(() => {
     const storedRoomInfo = localStorage.getItem("roomInfo");
-    // const storedUserInfo = localStorage.getItem("userInfo");
-
     if (storedRoomInfo) {
       setRoomInfo(JSON.parse(storedRoomInfo));
     } else {
       navigate("/mode");
     }
-  }, [setRoomInfo, navigate]);
+  }, []);
 
   useEffect(() => {
     if (!userInfo) {
@@ -74,10 +73,46 @@ const ChatPage = () => {
     return () => {
       socket.off("message", handleMessage);
     };
-  }, [userInfo.id, socket]);
+  }, [socket, userInfo.id]);
+
+  useEffect(() => {
+    socket.on("typing", ({ userInfo: typingUserInfo, isTyping }) => {
+      if (typingUserInfo.id !== userInfo.id) {
+        setIsTyping(isTyping);
+      }
+    });
+
+    return () => {
+      socket.off("typing");
+    };
+  }, [socket, userInfo.id]);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [socket, userInfo, roomInfo]);
+
+  const debounce = (fn, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn(...args), delay);
+    };
+  };
+
+  const emitTypingEvent = debounce(() => {
+    socket.emit("typing", { userInfo, roomInfo });
+  }, 500);
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);
+    emitTypingEvent();
   };
 
   const handleSendMessage = () => {
@@ -96,6 +131,10 @@ const ChatPage = () => {
         },
       ]);
       socket.emit("sendMessage", { message, userInfo, roomInfo });
+      socket.emit("stopTyping", {
+        userInfo,
+        roomInfo,
+      });
       setMessage("");
     }
   };
@@ -149,6 +188,7 @@ const ChatPage = () => {
                 />
               )
             )}
+          {isTyping && <p className={styles.isTypingText}>對方正在輸入中...</p>}
         </div>
         <div className={styles.inputWrapper}>
           <button>
