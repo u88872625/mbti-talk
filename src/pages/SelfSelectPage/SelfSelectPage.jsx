@@ -12,8 +12,6 @@ const SelfSelect = () => {
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
 
-  console.log("Initial user info:", userInfo);
-
   const handleMBTISelect = (MBTI) => {
     setSelectMBTI(MBTI);
   };
