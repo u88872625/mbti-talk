@@ -1,5 +1,5 @@
 import "../src/styles/App.module.scss";
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import SelfSelectPage from "./pages/SelfSelectPage/SelfSelectPage";
 import MatchSelectPage from "./pages/MatchSelectPage/MatchSelectPage";
@@ -24,37 +24,29 @@ function App() {
   const basename = process.env.PUBLIC_URL;
   return (
     <div className="App">
-      <BrowserRouter basename={basename}>
-        <Router>
-          <SocketContext.Provider value={socket}>
-            <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
-              <RoomContext.Provider value={{ roomInfo, setRoomInfo }}>
-                <Routes>
-                  <Route element={<HomePage />} path={"/"}></Route>
+      <Router basename={basename}>
+        <SocketContext.Provider value={socket}>
+          <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+            <RoomContext.Provider value={{ roomInfo, setRoomInfo }}>
+              <Routes>
+                <Route element={<HomePage />} path={"/"}></Route>
 
-                  <Route element={<SelfSelectPage />} path={"/select"}></Route>
+                <Route element={<SelfSelectPage />} path={"/select"}></Route>
 
-                  <Route
-                    element={<MatchSelectPage />}
-                    path={"/select-match"}
-                  ></Route>
-                  <Route element={<ModePage />} path={"/mode"}></Route>
-                  <Route
-                    element={<EISelectPage />}
-                    path={"/E-I-select"}
-                  ></Route>
-                  <Route element={<ChatPage />} path={"/chat"}></Route>
-                  <Route
-                    element={<QuizStartPage />}
-                    path={"/quiz-start"}
-                  ></Route>
-                  <Route element={<QuizPage />} path={"/quiz"}></Route>
-                </Routes>
-              </RoomContext.Provider>
-            </UserInfoContext.Provider>
-          </SocketContext.Provider>
-        </Router>
-      </BrowserRouter>
+                <Route
+                  element={<MatchSelectPage />}
+                  path={"/select-match"}
+                ></Route>
+                <Route element={<ModePage />} path={"/mode"}></Route>
+                <Route element={<EISelectPage />} path={"/E-I-select"}></Route>
+                <Route element={<ChatPage />} path={"/chat"}></Route>
+                <Route element={<QuizStartPage />} path={"/quiz-start"}></Route>
+                <Route element={<QuizPage />} path={"/quiz"}></Route>
+              </Routes>
+            </RoomContext.Provider>
+          </UserInfoContext.Provider>
+        </SocketContext.Provider>
+      </Router>
     </div>
   );
 }
