@@ -1,2 +1,25 @@
 @import "./base";
 @import "./reset";
+
+.desktopWarning {
+  display: none;
+  p {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktopWarning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .mobileContent {
+    display: none;
+  }
+}

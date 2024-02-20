@@ -1,4 +1,4 @@
-import "../src/styles/App.module.scss";
+import styles from "../src/styles/App.module.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import SelfSelectPage from "./pages/SelfSelectPage/SelfSelectPage";
@@ -25,27 +25,42 @@ function App() {
   return (
     <div className="App">
       <Router basename={basename}>
-        <SocketContext.Provider value={socket}>
-          <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
-            <RoomContext.Provider value={{ roomInfo, setRoomInfo }}>
-              <Routes>
-                <Route element={<HomePage />} path={"/"}></Route>
+        <div className={styles.desktopWarning}>
+          <p>
+            此內容只支援手機
+            <br />
+            請見諒
+          </p>
+        </div>
+        <div className={styles.mobileContent}>
+          <SocketContext.Provider value={socket}>
+            <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+              <RoomContext.Provider value={{ roomInfo, setRoomInfo }}>
+                <Routes>
+                  <Route element={<HomePage />} path={"/"}></Route>
 
-                <Route element={<SelfSelectPage />} path={"/select"}></Route>
+                  <Route element={<SelfSelectPage />} path={"/select"}></Route>
 
-                <Route
-                  element={<MatchSelectPage />}
-                  path={"/select-match"}
-                ></Route>
-                <Route element={<ModePage />} path={"/mode"}></Route>
-                <Route element={<EISelectPage />} path={"/E-I-select"}></Route>
-                <Route element={<ChatPage />} path={"/chat"}></Route>
-                <Route element={<QuizStartPage />} path={"/quiz-start"}></Route>
-                <Route element={<QuizPage />} path={"/quiz"}></Route>
-              </Routes>
-            </RoomContext.Provider>
-          </UserInfoContext.Provider>
-        </SocketContext.Provider>
+                  <Route
+                    element={<MatchSelectPage />}
+                    path={"/select-match"}
+                  ></Route>
+                  <Route element={<ModePage />} path={"/mode"}></Route>
+                  <Route
+                    element={<EISelectPage />}
+                    path={"/E-I-select"}
+                  ></Route>
+                  <Route element={<ChatPage />} path={"/chat"}></Route>
+                  <Route
+                    element={<QuizStartPage />}
+                    path={"/quiz-start"}
+                  ></Route>
+                  <Route element={<QuizPage />} path={"/quiz"}></Route>
+                </Routes>
+              </RoomContext.Provider>
+            </UserInfoContext.Provider>
+          </SocketContext.Provider>
+        </div>
       </Router>
     </div>
   );
