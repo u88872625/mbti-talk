@@ -21,32 +21,40 @@ function App() {
   const savedUserInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
   const [roomInfo, setRoomInfo] = useState({});
   const [userInfo, setUserInfo] = useState(savedUserInfo);
-
+  const basename = process.env.PUBLIC_URL;
   return (
     <div className="App">
-      <Router>
-        <SocketContext.Provider value={socket}>
-          <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
-            <RoomContext.Provider value={{ roomInfo, setRoomInfo }}>
-              <Routes>
-                <Route element={<HomePage />} path={"/"}></Route>
+      <BrowserRouter basename={basename}>
+        <Router>
+          <SocketContext.Provider value={socket}>
+            <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+              <RoomContext.Provider value={{ roomInfo, setRoomInfo }}>
+                <Routes>
+                  <Route element={<HomePage />} path={"/"}></Route>
 
-                <Route element={<SelfSelectPage />} path={"/select"}></Route>
+                  <Route element={<SelfSelectPage />} path={"/select"}></Route>
 
-                <Route
-                  element={<MatchSelectPage />}
-                  path={"/select-match"}
-                ></Route>
-                <Route element={<ModePage />} path={"/mode"}></Route>
-                <Route element={<EISelectPage />} path={"/E-I-select"}></Route>
-                <Route element={<ChatPage />} path={"/chat"}></Route>
-                <Route element={<QuizStartPage />} path={"/quiz-start"}></Route>
-                <Route element={<QuizPage />} path={"/quiz"}></Route>
-              </Routes>
-            </RoomContext.Provider>
-          </UserInfoContext.Provider>
-        </SocketContext.Provider>
-      </Router>
+                  <Route
+                    element={<MatchSelectPage />}
+                    path={"/select-match"}
+                  ></Route>
+                  <Route element={<ModePage />} path={"/mode"}></Route>
+                  <Route
+                    element={<EISelectPage />}
+                    path={"/E-I-select"}
+                  ></Route>
+                  <Route element={<ChatPage />} path={"/chat"}></Route>
+                  <Route
+                    element={<QuizStartPage />}
+                    path={"/quiz-start"}
+                  ></Route>
+                  <Route element={<QuizPage />} path={"/quiz"}></Route>
+                </Routes>
+              </RoomContext.Provider>
+            </UserInfoContext.Provider>
+          </SocketContext.Provider>
+        </Router>
+      </BrowserRouter>
     </div>
   );
 }
