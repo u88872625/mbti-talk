@@ -1,5 +1,5 @@
 import "../src/styles/App.module.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import SelfSelectPage from "./pages/SelfSelectPage/SelfSelectPage";
 import MatchSelectPage from "./pages/MatchSelectPage/MatchSelectPage";
