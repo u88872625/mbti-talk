@@ -7,117 +7,115 @@
   height: 100vh;
 }
 
-@keyframes lineAppear {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.storyText {
-  margin-top: 40%;
-  .text {
-    font-size: 19px;
-    font-weight: 900;
-    line-height: 50px;
-    text-align: center;
-    opacity: 0;
-    animation: lineAppear 1s forwards;
-  }
-
-  @for $i from 1 through 6 {
-    .line:nth-child(#{$i}) {
-      animation-delay: ($i - 1) * 1s;
-    }
-  }
-}
-
-.buttonWrapper {
-  position: absolute;
-  margin: 0 auto;
-  left: 25%;
-  z-index: 999;
-  margin-top: 30px;
-
-  button {
-    opacity: 0;
-    animation: buttonAppear 1s forwards;
-    animation-delay: 5s;
-  }
-
-  @keyframes buttonAppear {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-.pawWrapper {
-  position: relative;
+.quizWrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 180px;
+  align-items: center;
 
-  img {
-    opacity: 0;
-    animation: pawAppear 2s forwards;
-  }
-
-  .paw30 {
-    position: absolute;
-    top: 15px;
-    right: 40%;
-    animation-delay: 0.5s;
-  }
-
-  .paw50 {
-    position: absolute;
-    top: 40px;
-    right: 50%;
-    animation-delay: 1s;
-  }
-
-  .paw70 {
-    position: absolute;
-    top: 65px;
-    right: 40%;
-    animation-delay: 1.5s;
-  }
-
-  .paw90 {
-    position: absolute;
-    top: 90px;
-    right: 50%;
-    animation-delay: 2s;
-  }
-
-  .paw100 {
-    position: absolute;
-    top: 115px;
-    right: 40%;
-    animation-delay: 2.5s;
-  }
-
-  .cat {
-    position: absolute;
-    top: 150px;
-    animation-delay: 3s;
-  }
-  @keyframes pawAppear {
-    from {
+  .storyText {
+    .text {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 50px;
+      text-align: center;
       opacity: 0;
+      animation: lineAppear 1s forwards;
     }
-    to {
-      opacity: 1;
+
+    @keyframes lineAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .buttonWrapper {
+    z-index: 999;
+    margin-top: 15px;
+
+    button {
+      opacity: 0;
+      animation: buttonAppear 1s forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes buttonAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .pawWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    img {
+      opacity: 0;
+      animation: pawAppear 2s forwards;
+    }
+
+    .paw30 {
+      position: absolute;
+      top: 15px;
+      right: 40%;
+      animation-delay: 0.5s;
+    }
+
+    .paw50 {
+      position: absolute;
+      top: 40px;
+      right: 50%;
+      animation-delay: 1s;
+    }
+
+    .paw70 {
+      position: absolute;
+      top: 65px;
+      right: 40%;
+      animation-delay: 1.5s;
+    }
+
+    .paw90 {
+      position: absolute;
+      top: 90px;
+      right: 50%;
+      animation-delay: 2s;
+    }
+
+    .paw100 {
+      position: absolute;
+      top: 115px;
+      right: 40%;
+      animation-delay: 2.5s;
+    }
+
+    .cat {
+      position: absolute;
+      top: 150px;
+      animation-delay: 3s;
+    }
+    @keyframes pawAppear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   }
 }

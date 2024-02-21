@@ -82,7 +82,7 @@ const Question = ({ question, onOptionSelect }) => {
               key={key}
               onClick={() => onOptionSelect(question.nextQuestion[key])}
             >
-              <img src={option} alt="" />
+              <img src={option} alt="option" />
             </button>
           ))}
         </div>
