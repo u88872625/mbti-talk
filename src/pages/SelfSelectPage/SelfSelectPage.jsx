@@ -8,7 +8,6 @@ import { SocketContext, UserInfoContext } from "../../utils/context";
 const SelfSelect = () => {
   const [selectMBTI, setSelectMBTI] = useState(null);
   const { userInfo, setUserInfo } = useContext(UserInfoContext);
-
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
 
@@ -30,11 +29,15 @@ const SelfSelect = () => {
     localStorage.removeItem("userInfo");
 
     socket.on("userInfo", (user) => {
-      console.log("Received user info:", user);
-      setUserInfo(user);
-      localStorage.setItem("userInfo", JSON.stringify(user));
+      if (!user) {
+        alert("進入失敗，請重新整理或稍後再試！");
+      } else {
+        console.log("Received user info:", user);
+        setUserInfo(user);
+        localStorage.setItem("userInfo", JSON.stringify(user));
 
-      navigate("/mode");
+        navigate("/mode");
+      }
     });
     return () => {
       socket.off("userInfo");
