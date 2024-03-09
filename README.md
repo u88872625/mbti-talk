@@ -72,7 +72,7 @@ ctrl + c
 
 - Node.js
 - react: v18.2.0
-- clsx: v1.2.1
+- socket.io: v4.7.2
 - react-bootstrap: v2.8.0
 - react-router-dom: v6.4.1
 - sass: v1.66.1
