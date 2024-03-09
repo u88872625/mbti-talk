@@ -24,8 +24,8 @@ https://u88872625.github.io/mbti-talk/
 
 ### 3. 點擊 NO 進入心理測驗
 
-![img](https://upload.cc/i1/2024/03/09/Bszkbu.png)
-![img](https://upload.cc/i1/2024/03/09/kiBQzg.png)
+![img](https://upload.cc/i1/2024/03/09/Gyk3le.png)
+
 
 ### 4. 獲得身分後，可以進入聊天大廳(目前只開放隨機聊天)
 
