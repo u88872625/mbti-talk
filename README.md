@@ -16,7 +16,7 @@ https://u88872625.github.io/mbti-talk/
 
 ### 1. 首頁
 
-![img](https://upload.cc/i1/2024/03/09/1j0oLX.png)
+![img](https://upload.cc/i1/2024/03/09/VT7ur6.png)
 
 ### 2. 點擊 YES 進入身分選擇
 
