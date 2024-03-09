@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+## MBTI Talk
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+利用 React 及 Socket.io 製作一個匿名聊天網站，使用者進入後自行選擇或玩心理測驗獲得 MBTI 與他人配對聊天。
 
-## Available Scripts
+## 專案功能
 
-In the project directory, you can run:
+- 可以自己選擇自己的 MBTI 進入聊天大廳
+- 可以使用心理測驗得知自己的 MBTI 類型並進入聊天大廳
+- 可以隨機配對並匿名即時聊天
 
-### `npm start`
+## 專案主頁
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://u88872625.github.io/mbti-talk/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 頁面呈現
 
-### `npm test`
+### 1. 首頁
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![img](https://upload.cc/i1/2024/03/09/1j0oLX.png)
 
-### `npm run build`
+### 2. 點擊 YES 進入身分選擇
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![img](https://upload.cc/i1/2024/03/09/H2DVBx.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. 點擊 NO 進入心理測驗
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![img](https://upload.cc/i1/2024/03/09/Bszkbu.png)
+![img](https://upload.cc/i1/2024/03/09/kiBQzg.png)
 
-### `npm run eject`
+### 4. 獲得身分後，可以進入聊天大廳(目前只開放隨機聊天)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![img](https://upload.cc/i1/2024/03/09/hIPzAx.jpg)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5. 進入聊天室
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![img](https://upload.cc/i1/2024/03/09/GAKRSp.png)
+![img](https://upload.cc/i1/2024/03/09/DkmG4c.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 如何使用
 
-## Learn More
+1. 安裝 Node.js 及 npm
+2. clone 專案到本地
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. 在本地開啟後，透過終端機進入資料夾，輸入：
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm install
+```
 
-### Code Splitting
+4. 安裝完畢，繼續輸入:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+5.  接著瀏覽器將會自動開啟 "http://localhost:3000/mbti-talk"
+    若成功運行，則會看到底下訊息:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
 
-### Making a Progressive Web App
+webpack compiled successfully
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+6. 要停止時則按 ：
 
-### Advanced Configuration
+```bash
+ctrl + c
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 開發工具
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Node.js
+- react: v18.2.0
+- clsx: v1.2.1
+- react-bootstrap: v2.8.0
+- react-router-dom: v6.4.1
+- sass: v1.66.1
