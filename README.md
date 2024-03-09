@@ -16,7 +16,7 @@ https://u88872625.github.io/mbti-talk/
 
 ### 1. 首頁
 
-![img](https://upload.cc/i1/2024/03/09/VT7ur6.png)
+![img](https://upload.cc/i1/2024/03/09/ZKsI46.png)
 
 ### 2. 點擊 YES 進入身分選擇
 
@@ -29,12 +29,13 @@ https://u88872625.github.io/mbti-talk/
 
 ### 4. 獲得身分後，可以進入聊天大廳(目前只開放隨機聊天)
 
-![img](https://upload.cc/i1/2024/03/09/hIPzAx.jpg)
+![img](https://upload.cc/i1/2024/03/09/u0Wdk6.png) 
+
 
 ### 5. 進入聊天室
 
-![img](https://upload.cc/i1/2024/03/09/GAKRSp.png)
-![img](https://upload.cc/i1/2024/03/09/DkmG4c.png)
+![img](https://upload.cc/i1/2024/03/09/4d7ieR.png)
+
 
 ## 如何使用
 
