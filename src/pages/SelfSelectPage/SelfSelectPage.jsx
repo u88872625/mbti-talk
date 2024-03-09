@@ -17,11 +17,15 @@ const SelfSelect = () => {
 
   const handleMatchButtonClick = () => {
     if (selectMBTI) {
-      socket.emit("selectMBTI", {
-        id: userInfo.id,
-        mbtiType: selectMBTI.type,
-        mbtiImage: selectMBTI.image,
-      });
+      if (socket.connected) {
+        socket.emit("selectMBTI", {
+          id: userInfo.id,
+          mbtiType: selectMBTI.type,
+          mbtiImage: selectMBTI.image,
+        });
+      } else {
+        alert("連接失敗，請重新整理或稍後再試！");
+      }
     }
   };
 
@@ -29,18 +33,21 @@ const SelfSelect = () => {
     localStorage.removeItem("userInfo");
 
     socket.on("userInfo", (user) => {
-      if (!user) {
-        alert("進入失敗，請重新整理或稍後再試！");
-      } else {
-        console.log("Received user info:", user);
-        setUserInfo(user);
-        localStorage.setItem("userInfo", JSON.stringify(user));
+      console.log("Received user info:", user);
+      setUserInfo(user);
+      localStorage.setItem("userInfo", JSON.stringify(user));
 
-        navigate("/mode");
-      }
+      navigate("/mode");
     });
+
+    socket.on("connect_error", (err) => {
+      alert("連接失敗，請重新整理或稍後再試！");
+      console.error("Socket connect_error:", err);
+    });
+
     return () => {
       socket.off("userInfo");
+      socket.off("connect_error");
     };
   }, [socket, setUserInfo, navigate]);
 
