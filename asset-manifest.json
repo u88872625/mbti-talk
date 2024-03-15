@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mbti-talk/static/css/main.262792e8.css",
-    "main.js": "/mbti-talk/static/js/main.9b3827eb.js",
+    "main.js": "/mbti-talk/static/js/main.a3c7545b.js",
     "static/js/787.a1301362.chunk.js": "/mbti-talk/static/js/787.a1301362.chunk.js",
     "static/media/Q0door.svg": "/mbti-talk/static/media/Q0door.1549cae3470a8fb924dda85c5d418bc7.svg",
     "static/media/follow button.svg": "/mbti-talk/static/media/follow button.0448b0c0469a7664aa1bfc58e7e1879c.svg",
@@ -85,11 +85,11 @@
     "static/media/arrow_insert.svg": "/mbti-talk/static/media/arrow_insert.e013815badd745ba06cb34fd686ecc16.svg",
     "static/media/send.svg": "/mbti-talk/static/media/send.2a6f0115d5997b69f5484102dd28c052.svg",
     "main.262792e8.css.map": "/mbti-talk/static/css/main.262792e8.css.map",
-    "main.9b3827eb.js.map": "/mbti-talk/static/js/main.9b3827eb.js.map",
+    "main.a3c7545b.js.map": "/mbti-talk/static/js/main.a3c7545b.js.map",
     "787.a1301362.chunk.js.map": "/mbti-talk/static/js/787.a1301362.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.262792e8.css",
-    "static/js/main.9b3827eb.js"
+    "static/js/main.a3c7545b.js"
   ]
 }
