@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./SelfSelectPage.module.scss";
 import MBTIselect from "../../components/MBTIselect/MBTIselect";
 import MatchButton from "../../components/Buttons/MatchButton";
-import { Link, useNavigate } from "react-router-dom";
-import { SocketContext, UserInfoContext } from "../../utils/context";
+import { useNavigate } from "react-router-dom";
+import { SocketContext } from "../../utils/context";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "../../store/modules/user";
 
 const SelfSelect = () => {
   const [selectMBTI, setSelectMBTI] = useState(null);
-  const { userInfo, setUserInfo } = useContext(UserInfoContext);
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user.userInfo);
   const socket = useContext(SocketContext);
   const navigate = useNavigate();
 
@@ -17,39 +20,23 @@ const SelfSelect = () => {
 
   const handleMatchButtonClick = () => {
     if (selectMBTI) {
+      const updatedUserInfo = {
+        ...userInfo,
+        id: socket.id,
+        mbtiType: selectMBTI.type,
+        mbtiImage: selectMBTI.image,
+      };
+      dispatch(setUserInfo(updatedUserInfo));
+      localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
+
       if (socket.connected) {
-        socket.emit("selectMBTI", {
-          id: userInfo.id,
-          mbtiType: selectMBTI.type,
-          mbtiImage: selectMBTI.image,
-        });
+        socket.emit("selectMBTI", updatedUserInfo);
+        navigate("/mode");
       } else {
         alert("連接失敗，請重新整理或稍後再試！");
       }
     }
   };
-
-  useEffect(() => {
-    localStorage.removeItem("userInfo");
-
-    socket.on("userInfo", (user) => {
-      console.log("Received user info:", user);
-      setUserInfo(user);
-      localStorage.setItem("userInfo", JSON.stringify(user));
-
-      navigate("/mode");
-    });
-
-    socket.on("connect_error", (err) => {
-      alert("連接失敗，請重新整理或稍後再試！");
-      console.error("Socket connect_error:", err);
-    });
-
-    return () => {
-      socket.off("userInfo");
-      socket.off("connect_error");
-    };
-  }, [socket, setUserInfo, navigate]);
 
   return (
     <div className={styles.selfSelect}>

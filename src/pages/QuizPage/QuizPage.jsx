@@ -2,15 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./QuizPage.module.scss";
 import Questions from "../../components/QuizComponent/Questions";
 import Results from "../../components/QuizComponent/Results";
-import { SocketContext, UserInfoContext } from "../../utils/context";
+import { SocketContext } from "../../utils/context";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "../../store/modules/user";
 
 const QuizPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [finalResult, setFinalResult] = useState("");
   const socket = useContext(SocketContext);
-  const { userInfo, setUserInfo } = useContext(UserInfoContext);
+  const userInfo = useSelector((state) => state.user.userInfo);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleOptionSelect = (next) => {
     if (typeof next === "object") {
@@ -22,27 +25,25 @@ const QuizPage = () => {
 
   const handleMatchButtonClick = () => {
     if (finalResult) {
-      socket.emit("selectMBTI", {
-        id: userInfo.id,
+      const updatedUserInfo = {
+        ...userInfo,
+        id: socket.id,
         mbtiType: finalResult.type,
-        mbtiImage: finalResult.avatar,
-      });
+        mbtiImage: finalResult.image,
+      };
+
+      dispatch(setUserInfo(updatedUserInfo));
+      localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
+
+      if (socket.connected) {
+        socket.emit("selectMBTI", updatedUserInfo);
+        navigate("/mode");
+      } else {
+        alert("連接失敗，請重新整理或稍後再試！");
+      }
     }
   };
 
-  useEffect(() => {
-    localStorage.removeItem("userInfo");
-
-    socket.on("userInfo", (user) => {
-      setUserInfo(user);
-      localStorage.setItem("userInfo", JSON.stringify(user));
-
-      navigate("/mode");
-    });
-    return () => {
-      socket.off("userInfo");
-    };
-  }, [socket, setUserInfo, navigate]);
   return (
     <div>
       {finalResult === "" ? (

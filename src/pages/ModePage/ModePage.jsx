@@ -6,17 +6,16 @@ import BluePaw from "../../assets/image/talk/paw-blue.svg";
 import Loading from "../../components/Loading/Loading";
 import MatchButton from "../../components/Buttons/MatchButton";
 import { useNavigate } from "react-router-dom";
-import {
-  SocketContext,
-  RoomContext,
-  UserInfoContext,
-} from "../../utils/context";
+import { SocketContext } from "../../utils/context";
+import { useSelector, useDispatch } from "react-redux";
+import { setRoomInfo } from "../../store/modules/user";
 
 const Mode = () => {
   const [loading, setLoading] = useState(false);
   const socket = useContext(SocketContext);
-  const { roomInfo, setRoomInfo } = useContext(RoomContext);
-  const { userInfo } = useContext(UserInfoContext);
+  const roomInfo = useSelector((state) => state.user.roomInfo);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(userInfo);
   console.log(roomInfo);
@@ -36,9 +35,9 @@ const Mode = () => {
     const handleRandomRoomNum = (randomRoomNum) => {
       setLoading(false);
       const newRoomInfo = { mode: "random", room: randomRoomNum };
-      setRoomInfo(newRoomInfo);
+      dispatch(setRoomInfo(newRoomInfo));
       localStorage.setItem("roomInfo", JSON.stringify(newRoomInfo));
-      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
       navigate("/chat");
     };
 
@@ -47,7 +46,7 @@ const Mode = () => {
     return () => {
       socket.off("randomRoomNum", handleRandomRoomNum);
     };
-  }, [socket, navigate, userInfo, setRoomInfo]);
+  }, [socket, navigate, userInfo, dispatch]);
 
   useEffect(() => {
     if (!userInfo.mbtiType) {

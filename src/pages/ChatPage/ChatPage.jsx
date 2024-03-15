@@ -4,88 +4,33 @@ import leaveIcon from "../../assets/icon/arrow_insert.svg";
 import sendIcon from "../../assets/icon/send.svg";
 import SystemBox from "../../components/ChatBox/SystemBox";
 import { OtherChatBox, SelfChatBox } from "../../components/ChatBox/UserBox";
-import {
-  SocketContext,
-  RoomContext,
-  UserInfoContext,
-} from "../../utils/context";
+import { SocketContext } from "../../utils/context";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { setRoomInfo } from "../../store/modules/user";
+import useChat from "../../hooks/useChat";
 
 const ChatPage = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-  const [isTyping, setIsTyping] = useState(false);
   const socket = useContext(SocketContext);
-  const { roomInfo, setRoomInfo } = useContext(RoomContext);
-  const { userInfo, setUserInfo } = useContext(UserInfoContext);
+  const roomInfo = useSelector((state) => state.user.roomInfo);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const messageWrapperRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(userInfo);
-  console.log(messages);
-  console.log(roomInfo);
-
-  useEffect(() => {
-    const storedRoomInfo = localStorage.getItem("roomInfo");
-    if (storedRoomInfo) {
-      setRoomInfo(JSON.parse(storedRoomInfo));
-    } else {
-      navigate("/mode");
-    }
-  }, []);
+  const { messages, setMessages, isTyping } = useChat(socket, userInfo);
 
   useEffect(() => {
     if (!userInfo) {
       navigate("/select");
     } else if (roomInfo.room) {
       socket.emit("join", { userInfo, roomInfo });
-      if (!userInfo.id) {
-        navigate("/select");
-      }
     }
   }, [userInfo, roomInfo, socket, navigate]);
-
-  useEffect(() => {
-    const handleMessage = (newMessage) => {
-      if (newMessage.id === userInfo.id) return;
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          id: newMessage.id,
-          name: newMessage.user,
-          content: newMessage.text,
-          image: newMessage.image,
-          timeStamp: new Date().toLocaleTimeString([], {
-            hour12: false,
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-        },
-      ]);
-    };
-
-    socket.on("message", handleMessage);
-
-    // 清理函数
-    return () => {
-      socket.off("message", handleMessage);
-    };
-  }, [socket, userInfo.id]);
-
-  useEffect(() => {
-    socket.on("typing", ({ userInfo: typingUserInfo, isTyping }) => {
-      if (typingUserInfo.id !== userInfo.id) {
-        setIsTyping(isTyping);
-      }
-    });
-
-    return () => {
-      socket.off("typing");
-    };
-  }, [socket, userInfo.id]);
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -147,7 +92,7 @@ const ChatPage = () => {
   };
 
   const handleLeaveRoom = () => {
-    setRoomInfo({});
+    dispatch(setRoomInfo({}));
     localStorage.removeItem("roomInfo");
     socket.emit("leaveRoom", {
       userInfo: userInfo,
