@@ -32,6 +32,7 @@ const ChatPage = () => {
     }
   }, [userInfo, roomInfo, socket, navigate]);
 
+  // 使用者點選上一頁或重新整理頁面時
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       e.preventDefault();
@@ -43,6 +44,7 @@ const ChatPage = () => {
     };
   }, [socket, userInfo, roomInfo]);
 
+  // 防抖
   const debounce = (fn, delay) => {
     let timeoutId;
     return function (...args) {
@@ -60,6 +62,7 @@ const ChatPage = () => {
     emitTypingEvent();
   };
 
+  // 傳送訊息
   const handleSendMessage = () => {
     if (message.trim()) {
       setMessages([
@@ -91,6 +94,7 @@ const ChatPage = () => {
     }
   };
 
+  // 使用者離開聊天室
   const handleLeaveRoom = () => {
     dispatch(setRoomInfo({}));
     localStorage.removeItem("roomInfo");
@@ -102,6 +106,7 @@ const ChatPage = () => {
     navigate("/mode");
   };
 
+  // 顯示最新的對話內容
   useEffect(() => {
     if (messageWrapperRef.current) {
       const { scrollHeight, clientHeight } = messageWrapperRef.current;
