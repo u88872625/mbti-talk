@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mbti-talk/static/css/main.916b783b.css",
-    "main.js": "/mbti-talk/static/js/main.6c54c21e.js",
+    "main.css": "/mbti-talk/static/css/main.ab70abf6.css",
+    "main.js": "/mbti-talk/static/js/main.69d38fdf.js",
     "static/js/787.a1301362.chunk.js": "/mbti-talk/static/js/787.a1301362.chunk.js",
     "static/media/background.png": "/mbti-talk/static/media/background.76c6d30a9bc0d3570709.png",
     "static/media/背景圖片.png": "/mbti-talk/static/media/背景圖片.d57c6c9868710278469d.png",
@@ -78,12 +78,12 @@
     "static/media/cat.svg": "/mbti-talk/static/media/cat.ca6318bb2d8ef1ce98c47d97be08269a.svg",
     "static/media/arrow_insert.svg": "/mbti-talk/static/media/arrow_insert.e013815badd745ba06cb34fd686ecc16.svg",
     "static/media/send.svg": "/mbti-talk/static/media/send.2a6f0115d5997b69f5484102dd28c052.svg",
-    "main.916b783b.css.map": "/mbti-talk/static/css/main.916b783b.css.map",
-    "main.6c54c21e.js.map": "/mbti-talk/static/js/main.6c54c21e.js.map",
+    "main.ab70abf6.css.map": "/mbti-talk/static/css/main.ab70abf6.css.map",
+    "main.69d38fdf.js.map": "/mbti-talk/static/js/main.69d38fdf.js.map",
     "787.a1301362.chunk.js.map": "/mbti-talk/static/js/787.a1301362.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.916b783b.css",
-    "static/js/main.6c54c21e.js"
+    "static/css/main.ab70abf6.css",
+    "static/js/main.69d38fdf.js"
   ]
 }
