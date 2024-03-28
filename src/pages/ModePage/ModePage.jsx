@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./ModePage.module.scss";
-import PinkPaw from "../../assets/image/talk/paw-pink.svg";
-import YellowPaw from "../../assets/image/talk/paw-yellow.svg";
-import BluePaw from "../../assets/image/talk/paw-blue.svg";
+import PinkPaw from "../../assets/image/talk/paw-pink.png";
+import YellowPaw from "../../assets/image/talk/paw-yellow.png";
+import BluePaw from "../../assets/image/talk/paw-blue.png";
 import Loading from "../../components/Loading/Loading";
 import MatchButton from "../../components/Buttons/MatchButton";
 import { useNavigate } from "react-router-dom";
