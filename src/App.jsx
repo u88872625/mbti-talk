@@ -15,7 +15,9 @@ import { io } from "socket.io-client";
 
 const socket = io.connect("https://mbti-talk-socket-io.onrender.com", {
   transports: ["websocket"],
-  reconnection: false,
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 2000,
 });
 
 function App() {
