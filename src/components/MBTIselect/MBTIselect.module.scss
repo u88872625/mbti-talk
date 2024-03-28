@@ -1,20 +1,20 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 3px;
-}
+  gap: 5px;
 
-img {
-  width: 92px;
-  height: 107.94px;
-}
+  img {
+    width: 92px;
+    height: 107.94px;
+  }
 
-.selected {
-  opacity: 1;
-  cursor: pointer;
-}
+  .selected {
+    opacity: 1;
+    cursor: pointer;
+  }
 
-.notSelected {
-  opacity: 0.5;
-  cursor: pointer;
+  .notSelected {
+    opacity: 0.5;
+    cursor: pointer;
+  }
 }
