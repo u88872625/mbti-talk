@@ -29,7 +29,7 @@ const QuizPage = () => {
         ...userInfo,
         id: socket.id,
         mbtiType: finalResult.type,
-        mbtiImage: finalResult.image,
+        mbtiImage: finalResult.avatar,
       };
 
       dispatch(setUserInfo(updatedUserInfo));

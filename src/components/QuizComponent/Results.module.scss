@@ -1,4 +1,5 @@
 .results {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +13,6 @@
 
   .buttonWrapper {
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
   }
 }
