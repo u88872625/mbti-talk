@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./QuizStartPage.module.scss";
-import FollowBtn from "../../assets/image/quiz/follow button.svg";
+import FollowBtn from "../../assets/image/quiz/follow button.png";
 import Paw30 from "../../assets/image/quiz/貓咪腳印30.svg";
 import Paw50 from "../../assets/image/quiz/貓咪腳印50.svg";
 import Paw70 from "../../assets/image/quiz/貓咪腳印70.svg";
